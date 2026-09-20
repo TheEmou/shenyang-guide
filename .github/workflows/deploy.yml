@@ -1,0 +1,53 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # 从仓库 Secret 注入高德 Key（AMAP_KEY / AMAP_JCODE），Key 不写入源码
+      - name: Inject Amap key from Secrets
+        env:
+          AMAP_KEY: ${{ secrets.AMAP_KEY }}
+          AMAP_JCODE: ${{ secrets.AMAP_JCODE }}
+        run: |
+          python - <<'PY'
+          import os
+          p = "index.html"
+          s = open(p, encoding="utf-8").read()
+          s = s.replace("__AMAP_KEY__", os.environ["AMAP_KEY"])
+          s = s.replace("__AMAP_JCODE__", os.environ["AMAP_JCODE"])
+          open(p, "w", encoding="utf-8").write(s)
+          print("amap key injected")
+          PY
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

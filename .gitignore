@@ -1,0 +1,19 @@
+# 备份目录（不纳入版本控制）
+bak/
+
+# 本地构建产物（含注入后的 Key，切勿提交）
+dist/
+
+# 系统与编辑器文件
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+
+# Python 临时文件
+__pycache__/
+*.pyc
+
+# 日志
+*.log

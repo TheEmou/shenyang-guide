@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>盛京两日 · 沈阳周末漫游指南</title>
+<meta name="description" content="沈阳两日游路线指南：故宫、帅府、中街、大东副食，附高德地图步行路线与关键景点标注。">
+<style>
+  :root{
+    --paper:#F7F2E7;
+    --paper-2:#EFE7D6;
+    --ink:#2A251D;
+    --ink-2:#6B6354;
+    --red:#A63A2B;
+    --red-deep:#7E2A20;
+    --gold:#B7802C;
+    --line:#E0D6C0;
+    --serif:"Songti SC","STSong","Noto Serif SC","Source Han Serif SC","SimSun",serif;
+    --sans:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+  body{background:var(--paper);color:var(--ink);font-family:var(--sans);line-height:1.75;overflow-x:hidden}
+  img{display:block;max-width:100%}
+  a{color:inherit;text-decoration:none}
+  ::selection{background:var(--red);color:#fff}
+
+  /* ---------- nav ---------- */
+  .nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;gap:18px;
+    padding:10px clamp(16px,4vw,40px);background:rgba(247,242,231,.82);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--line);transition:box-shadow .3s}
+  .nav.scrolled{box-shadow:0 6px 24px rgba(42,37,29,.08)}
+  .nav .brand{font-family:var(--serif);font-size:19px;font-weight:700;letter-spacing:.14em;white-space:nowrap}
+  .nav .brand em{font-style:normal;color:var(--red)}
+  .nav .links{display:flex;gap:4px;margin-left:auto;overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none}
+  .nav .links::-webkit-scrollbar{display:none}
+  .nav .links a{font-size:13px;letter-spacing:.08em;color:var(--ink-2);padding:6px 12px;border-radius:999px;white-space:nowrap;transition:.25s}
+  .nav .links a:hover,.nav .links a.on{color:#fff;background:var(--red)}
+
+  /* ---------- hero ---------- */
+  .hero{position:relative;height:100svh;min-height:560px;display:flex;align-items:flex-end;overflow:hidden;background:#3a2620}
+  .hero .bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;animation:heroZoom 20s ease-out forwards}
+  @keyframes heroZoom{from{transform:scale(1.12)}to{transform:scale(1)}}
+  .hero .veil{position:absolute;inset:0;background:linear-gradient(180deg,rgba(30,18,14,.28) 0%,rgba(30,18,14,0) 34%,rgba(30,18,14,.62) 78%,rgba(26,15,11,.86) 100%)}
+  .hero .inner{position:relative;z-index:2;width:100%;max-width:1080px;margin:0 auto;padding:0 clamp(20px,5vw,48px) clamp(40px,7vh,72px);color:#F6EFE2}
+  .hero .kicker{display:flex;align-items:center;gap:12px;font-size:12px;letter-spacing:.42em;text-transform:uppercase;color:#E8CFA0;animation:rise .9s .2s both}
+  .hero .kicker::before{content:"";width:44px;height:1px;background:#E8CFA0}
+  .hero h1{font-family:var(--serif);font-weight:700;font-size:clamp(52px,10vw,108px);line-height:1.06;letter-spacing:.06em;margin:14px 0 6px;animation:rise .9s .38s both}
+  .hero h1 span{color:#E4573F}
+  .hero .sub{font-family:var(--serif);font-size:clamp(15px,2.4vw,19px);letter-spacing:.28em;color:#EFE2CC;animation:rise .9s .55s both}
+  .hero .chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px;animation:rise .9s .72s both}
+  .hero .chips i{font-style:normal;font-size:12.5px;letter-spacing:.12em;padding:7px 16px;border:1px solid rgba(246,239,226,.42);border-radius:999px;backdrop-filter:blur(4px)}
+  .hero .seal{position:absolute;right:clamp(20px,5vw,48px);bottom:clamp(40px,7vh,72px);width:76px;height:76px;border:2.5px solid #C6472F;border-radius:10px;
+    display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:24px;line-height:1.25;letter-spacing:.1em;color:#E4573F;
+    writing-mode:vertical-rl;transform:rotate(4deg);background:rgba(26,15,11,.35);animation:rise .9s .9s both}
+  @keyframes rise{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:translateY(0)}}
+  .hero .down{position:absolute;left:50%;bottom:14px;transform:translateX(-50%);z-index:2;color:#E8CFA0;font-size:11px;letter-spacing:.3em;animation:bob 2.2s ease-in-out infinite}
+  @keyframes bob{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,8px)}}
+
+  /* ---------- common ---------- */
+  .wrap{max-width:1080px;margin:0 auto;padding:0 clamp(20px,5vw,48px)}
+  section{padding:clamp(56px,9vh,96px) 0}
+  .sec-head{display:flex;align-items:baseline;gap:18px;margin-bottom:8px}
+  .sec-head .no{font-family:var(--serif);color:var(--red);font-size:15px;letter-spacing:.2em}
+  .sec-head h2{font-family:var(--serif);font-size:clamp(28px,4.6vw,40px);letter-spacing:.1em;font-weight:700}
+  .sec-lead{color:var(--ink-2);max-width:640px;margin-bottom:clamp(28px,4vh,44px);font-size:15px}
+  .rule{height:1px;background:var(--line);margin:0 0 clamp(28px,4vh,44px)}
+  .tag{display:inline-block;font-size:11.5px;letter-spacing:.14em;color:var(--red);border:1px solid rgba(166,58,43,.4);border-radius:999px;padding:2px 11px;margin-bottom:10px}
+  .reveal{opacity:0;transform:translateY(28px);transition:opacity .8s ease,transform .8s ease}
+  .reveal.in{opacity:1;transform:none}
+
+  /* ---------- saturday timeline ---------- */
+  .tl{position:relative}
+  .tl::before{content:"";position:absolute;left:19px;top:8px;bottom:8px;width:1px;background:var(--line)}
+  .stop{position:relative;display:grid;grid-template-columns:40px 1fr;gap:clamp(14px,3vw,28px);padding-bottom:clamp(36px,6vh,56px)}
+  .stop .dot{position:relative;z-index:1;width:40px;height:40px;border-radius:50%;background:var(--paper);border:1px solid var(--line);
+    display:flex;align-items:center;justify-content:center;font-family:var(--serif);color:var(--red);font-size:16px;font-weight:700}
+  .stop.main .dot{background:var(--red);border-color:var(--red);color:#fff}
+  .stop .body{min-width:0}
+  .stop .time{display:flex;flex-wrap:wrap;align-items:center;gap:10px;color:var(--ink-2);font-size:13px;letter-spacing:.1em;margin-bottom:8px}
+  .stop .time b{font-family:var(--serif);color:var(--ink);font-size:20px;letter-spacing:.04em;font-weight:700}
+  .stop .time .dur{font-size:11.5px;color:var(--red);background:rgba(166,58,43,.09);padding:2px 10px;border-radius:999px}
+  .stop h3{font-family:var(--serif);font-size:clamp(21px,3.4vw,27px);letter-spacing:.08em;margin-bottom:8px}
+  .stop p{color:var(--ink-2);font-size:14.5px;max-width:640px}
+  .stop .tips{margin-top:10px;font-size:13px;color:var(--ink-2)}
+  .stop .tips b{color:var(--red);font-weight:600}
+  .stop figure{margin-top:16px;border-radius:14px;overflow:hidden;position:relative;aspect-ratio:16/8.5;background:linear-gradient(120deg,#E8DCC4,#DCCBAA)}
+  .stop figure img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s ease}
+  .stop figure:hover img{transform:scale(1.045)}
+  .stop figure figcaption{position:absolute;left:0;right:0;bottom:0;padding:26px 16px 10px;font-size:12px;letter-spacing:.12em;color:#F3EAD8;
+    background:linear-gradient(180deg,transparent,rgba(30,18,14,.72))}
+  .poi-link{display:inline-flex;align-items:center;gap:6px;margin-top:14px;font-size:13px;color:var(--red);border-bottom:1px dashed rgba(166,58,43,.5);padding-bottom:2px;cursor:pointer;background:none;border-top:0;border-left:0;border-right:0;font-family:inherit}
+  .poi-link:hover{color:var(--red-deep)}
+  .poi-link::after{content:"→";transition:transform .25s}
+  .poi-link:hover::after{transform:translateX(4px)}
+
+  /* ---------- map ---------- */
+  #map-sec{background:var(--paper-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .map-tools{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+  .map-tools button{font:inherit;font-size:13px;letter-spacing:.1em;padding:8px 18px;border-radius:999px;border:1px solid var(--line);
+    background:#FBF8F0;color:var(--ink-2);cursor:pointer;transition:.25s}
+  .map-tools button:hover{border-color:var(--red);color:var(--red)}
+  .map-tools button.on{background:var(--red);border-color:var(--red);color:#fff}
+  .map-box{position:relative;border-radius:18px;overflow:hidden;box-shadow:0 18px 50px rgba(42,37,29,.16);background:#E9E2D2}
+  #mapDiv{width:100%;height:clamp(420px,64vh,640px)}
+  .map-fallback{position:absolute;inset:0;display:none;align-items:center;justify-content:center;flex-direction:column;gap:8px;color:var(--ink-2);font-size:14px;padding:20px;text-align:center}
+  .route-stat{margin-top:12px;font-size:13px;color:var(--ink-2)}
+  .route-stat b{color:var(--red);font-weight:600}
+  .map-legend{display:flex;flex-wrap:wrap;gap:14px 22px;margin-top:10px;font-size:12.5px;color:var(--ink-2)}
+  .map-legend span{display:inline-flex;align-items:center;gap:7px}
+  .lg-pin,.lg-pin2,.lg-dot{width:12px;height:12px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);flex:none}
+  .lg-pin{background:var(--red)}
+  .lg-pin2{background:var(--red-deep)}
+  .lg-dot{border-radius:50%;transform:none;background:#8D8574}
+
+  /* ---------- 地图自定义标记 ---------- */
+  .mk{position:relative;text-align:center;font-family:var(--sans);line-height:1.4}
+  .mk-pin{width:30px;height:30px;margin:0 auto;border-radius:50% 50% 50% 0;transform:rotate(-45deg);
+    display:flex;align-items:center;justify-content:center;border:2px solid #fff;box-shadow:0 3px 8px rgba(42,37,29,.4)}
+  .mk-pin span{transform:rotate(45deg);font-weight:700;font-size:14px;color:#fff}
+  .mk-sat .mk-pin{background:var(--red)}
+  .mk-sun .mk-pin{background:var(--red-deep)}
+  .mk-nm{display:inline-block;margin-top:4px;padding:1px 8px;border-radius:6px;font-size:12px;letter-spacing:.05em;white-space:nowrap;
+    background:rgba(251,248,240,.95);color:var(--ink);border:1px solid rgba(224,214,192,.95);box-shadow:0 2px 6px rgba(42,37,29,.18)}
+  .mk-sat .mk-nm,.mk-sun .mk-nm{color:var(--red-deep);font-weight:600}
+  .mk-opt .mk-pin{width:14px;height:14px;border-radius:50%;transform:none;background:#6E6757;border-width:2px}
+  .mk-opt .mk-pin span{display:none}
+  .mk-opt .mk-nm{font-size:11px;padding:0 6px;background:rgba(251,248,240,.88)}
+  .amap-copyright,.amap-logo{opacity:.65}
+
+  /* ---------- sunday ---------- */
+  .opt-grid{display:grid;grid-template-columns:1.35fr 1fr;gap:22px}
+  .opt{background:#FBF8F0;border:1px solid var(--line);border-radius:18px;overflow:hidden;display:flex;flex-direction:column}
+  .opt figure{aspect-ratio:16/8;background:linear-gradient(120deg,#E8DCC4,#DCCBAA)}
+  .opt figure img{width:100%;height:100%;object-fit:cover}
+  .opt .cnt{padding:clamp(18px,3vw,28px)}
+  .opt h3{font-family:var(--serif);font-size:clamp(20px,3vw,25px);letter-spacing:.08em;margin-bottom:6px}
+  .opt .hist{font-size:13px;color:var(--ink-2);margin-bottom:14px}
+  .opt .hist b{color:var(--red)}
+  .buy{border-top:1px dashed var(--line);padding-top:14px}
+  .buy h4{font-size:13.5px;letter-spacing:.16em;color:var(--red);margin-bottom:8px}
+  .buy ul{list-style:none;columns:2;column-gap:22px}
+  .buy li{font-size:13.5px;color:var(--ink-2);padding:4px 0 4px 16px;position:relative;break-inside:avoid}
+  .buy li::before{content:"";position:absolute;left:0;top:12px;width:6px;height:6px;border-radius:50%;background:var(--red);opacity:.55}
+  .buy li b{color:var(--ink);font-weight:600}
+  .opt .cnt .poi-link{margin-top:16px}
+  .opt.flat{justify-content:center}
+  .opt.flat .cnt{display:flex;flex-direction:column;justify-content:center;height:100%}
+  .opt.flat .big{font-family:var(--serif);font-size:clamp(19px,2.6vw,24px);letter-spacing:.06em;line-height:1.6;margin-bottom:10px}
+  .opt.flat p{font-size:14px;color:var(--ink-2)}
+  .opt.flat .arrow{display:inline-flex;align-items:center;gap:8px;margin-top:18px;color:var(--red);font-size:14px;letter-spacing:.1em}
+
+  /* ---------- more grid ---------- */
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .g{background:#FBF8F0;border:1px solid var(--line);border-radius:16px;overflow:hidden;transition:transform .35s,box-shadow .35s}
+  .g:hover{transform:translateY(-5px);box-shadow:0 16px 36px rgba(42,37,29,.12)}
+  .g figure{aspect-ratio:16/9;background:linear-gradient(120deg,#E8DCC4,#DCCBAA)}
+  .g figure img{width:100%;height:100%;object-fit:cover}
+  .g .cnt{padding:16px 18px 18px}
+  .g h3{font-family:var(--serif);font-size:18px;letter-spacing:.08em;margin-bottom:5px}
+  .g p{font-size:13px;color:var(--ink-2)}
+  .g .meta{display:inline-block;margin-top:9px;font-size:11.5px;color:var(--gold);letter-spacing:.1em}
+  .g .poi-link{margin-top:10px}
+
+  /* ---------- nearby ---------- */
+  .hscroll{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:14px;margin:0 calc(-1*clamp(20px,5vw,48px));padding-left:clamp(20px,5vw,48px);padding-right:clamp(20px,5vw,48px);scrollbar-width:thin}
+  .city{flex:0 0 min(300px,74vw);scroll-snap-align:start;background:#FBF8F0;border:1px solid var(--line);border-radius:16px;overflow:hidden}
+  .city figure{aspect-ratio:4/3;background:linear-gradient(120deg,#E8DCC4,#DCCBAA)}
+  .city figure img{width:100%;height:100%;object-fit:cover}
+  .city .cnt{padding:16px 18px 20px}
+  .city .rail{font-size:11.5px;color:var(--red);letter-spacing:.14em;margin-bottom:6px}
+  .city h3{font-family:var(--serif);font-size:21px;letter-spacing:.1em}
+  .city h3 small{font-size:13px;color:var(--ink-2);font-family:var(--sans);letter-spacing:.06em;margin-left:8px}
+  .city p{font-size:13px;color:var(--ink-2);margin-top:8px}
+  .nearby-tail{margin-top:18px;font-size:13.5px;color:var(--ink-2)}
+  .nearby-tail b{color:var(--red)}
+
+  /* ---------- footer ---------- */
+  footer{background:#2A231B;color:#CFC4AC;padding:clamp(44px,7vh,72px) 0 110px}
+  footer .wrap{display:grid;grid-template-columns:1.2fr 1fr;gap:36px}
+  footer h4{font-family:var(--serif);color:#F0E6D0;font-size:17px;letter-spacing:.18em;margin-bottom:14px}
+  footer ul{list-style:none}
+  footer li{font-size:13.5px;padding:5px 0 5px 16px;position:relative;color:#B7AB92}
+  footer li::before{content:"";position:absolute;left:0;top:13px;width:5px;height:5px;border-radius:50%;background:var(--red)}
+  footer .fin{margin-top:34px;padding-top:20px;border-top:1px solid rgba(207,196,172,.18);font-size:12px;letter-spacing:.14em;color:#8E8268;display:flex;flex-wrap:wrap;gap:8px 22px;justify-content:space-between}
+
+  /* ---------- responsive ---------- */
+  @media (max-width:900px){
+    .opt-grid{grid-template-columns:1fr}
+    .grid{grid-template-columns:repeat(2,1fr)}
+    footer .wrap{grid-template-columns:1fr}
+  }
+  @media (max-width:620px){
+    .grid{grid-template-columns:1fr}
+    .nav{gap:10px}
+    .nav .links a{padding:6px 9px;font-size:12px}
+    .hero .seal{width:60px;height:60px;font-size:18px}
+    .buy ul{columns:1}
+    .stop figure{aspect-ratio:16/10}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *,*::before,*::after{animation:none!important;transition:none!important}
+    html{scroll-behavior:auto}
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav" id="nav">
+  <a class="brand" href="#top">盛京<em>两日</em></a>
+  <div class="links">
+    <a href="#day0">DAY 0</a>
+    <a href="#saturday">周六行程</a>
+    <a href="#map-sec">全域地图</a>
+    <a href="#sunday">周日上午</a>
+    <a href="#more">顺路加游</a>
+    <a href="#nearby">高铁周边</a>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <img class="bg" alt="沈阳故宫红墙金瓦" data-prompt="沈阳故宫红墙金色琉璃瓦宫殿建筑摄影，清晨柔和阳光，红墙延伸透视，中国古典建筑大气的横幅照片，无文字" data-size="landscape_16_9">
+  <div class="veil"></div>
+  <div class="inner">
+    <div class="kicker">Shenyang Weekend Guide</div>
+    <h1>盛京<span>两日</span></h1>
+    <div class="sub">红墙、民国老楼与胡同烟火 —— 沈阳周末漫游指南</div>
+    <div class="chips">
+      <i>2 晚 3 天</i><i>周五晚到 · 周日返程</i><i>老城步行核心区</i><i>地铁 1 号线直达</i><i>高德步行路线</i>
+    </div>
+  </div>
+  <div class="seal">盛京漫游</div>
+  <div class="down">向下滚动</div>
+</header>
+
+<!-- ================= 周五 DAY 0 ================= -->
+<section id="day0">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="no">零 / DAY 0</span><h2>周五 · 抵达盛京</h2></div>
+    <p class="sec-lead reveal">下班后出发，时间从容。今晚唯一的任务：住进老城，吃顿好的，睡个好觉——明天一早故宫开门就到。</p>
+    <div class="rule reveal"></div>
+    <div class="grid">
+      <div class="g reveal"><figure><img alt="沈阳北站高铁夜景" loading="lazy" data-prompt="沈阳北站火车站夜景摄影，高铁列车停靠站台，蓝调夜色灯光，现代交通枢纽，无文字" data-size="landscape_4_3"></figure>
+        <div class="cnt"><h3>抵达沈阳</h3><p>桃仙机场乘地铁 2 号线进市区；沈阳站、沈阳北站都在地铁 1/2 号线交汇圈，出站即达老城。</p><span class="meta">晚高峰后到达最从容</span></div></div>
+      <div class="g reveal"><figure><img alt="中街商圈夜景酒店" loading="lazy" data-prompt="从酒店房间窗户俯瞰沈阳中街夜景，红灯笼与仿古建筑屋顶，温馨暖光，旅行度假感，无文字" data-size="landscape_4_3"></figure>
+        <div class="cnt"><h3>入住 · 中街一带</h3><p>建议住中街·故宫商圈（怀远门站—中街站之间），两日行程全部步行可达；预算友好可选地铁 1 号线沿线。</p><span class="meta">两日行程步行圈</span></div></div>
+      <div class="g reveal"><figure><img alt="沈阳夜宵鸡架烧烤" loading="lazy" data-prompt="东北夜市烧烤摊鸡架烤串特写，炭火烟气升腾，诱人食欲，夜晚热闹氛围，无文字" data-size="landscape_4_3"></figure>
+        <div class="cnt"><h3>晚餐 · 第一顿盛京味</h3><p>到得早在中街吃老字号；到得晚，西塔烤肉或「老四季」鸡架抻面都是深夜也踏实的选择。</p><span class="meta">夜宵友好</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 周六 ================= -->
+<section id="saturday">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="no">壹 / DAY 1</span><h2>周六 · 一日走完一座盛京城</h2></div>
+    <p class="sec-lead reveal">故宫—帅府—总督府—中街，全部集中在 1 公里见方的老城之内，全程步行即可。上午看清宫，下午看民国，夜里钻胡同。</p>
+    <div class="rule reveal"></div>
+
+    <div class="tl">
+      <div class="stop main reveal">
+        <div class="dot">一</div>
+        <div class="body">
+          <div class="time"><b>09:00 – 12:00</b><span class="dur">约 2.5 小时</span></div>
+          <h3>沈阳故宫</h3>
+          <p>红墙清宫，关外唯一的皇家宫殿建筑群。东路大政殿与十王亭气势最足，中路崇政殿、凤凰楼一路穿行，琉璃甬道处处出片。</p>
+          <div class="tips"><b>贴士</b>　周一闭馆；提前在公众号预约购票，旺季上午人最少。</div>
+          <button class="poi-link" data-fly="gugong">在地图上查看</button>
+          <figure>
+            <img alt="沈阳故宫大政殿" loading="lazy" data-prompt="沈阳故宫大政殿古建筑摄影，红柱金瓦八角重檐亭式建筑，蓝天，游客稀少，庄重大气，无文字" data-size="landscape_16_9">
+            <figcaption>大政殿 · 八角重檐，努尔哈赤时期议政之所</figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <div class="stop reveal">
+        <div class="dot">二</div>
+        <div class="body">
+          <div class="time"><b>12:00 – 14:00</b><span class="dur">午餐 + 休整</span></div>
+          <h3>午餐与休息</h3>
+          <p>故宫西门出来就是中街商圈：老边饺子、马家烧麦、李连贵熏肉大饼都在步行范围内，吃完可回酒店小憩，避开正午的太阳。</p>
+        </div>
+      </div>
+
+      <div class="stop main reveal">
+        <div class="dot">三</div>
+        <div class="body">
+          <div class="time"><b>14:00 – 16:00</b><span class="dur">约 1.5 小时</span></div>
+          <h3>张学良旧居 · 张氏帅府 + 赵一荻旧居</h3>
+          <p>大青楼、老虎厅、四合院与中西合璧的民国建筑群，一部东北近代史。出门向东几十米即赵一荻旧居，可一并参观。</p>
+          <div class="tips"><b>贴士</b>　两处联票参观；大青楼楼梯窄，人多时需排队。</div>
+          <button class="poi-link" data-fly="shuaifu">在地图上查看</button>
+          <figure>
+            <img alt="张氏帅府大青楼" loading="lazy" data-prompt="沈阳张氏帅府大青楼，民国时期罗马风格青砖洋楼建筑摄影，砖砌外墙，历史感，晴天，无文字" data-size="landscape_16_9">
+            <figcaption>大青楼 · 帅府的绝对主角</figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <div class="stop reveal">
+        <div class="dot">四</div>
+        <div class="body">
+          <div class="time"><b>16:00 – 17:00</b><span class="dur">顺路可选</span></div>
+          <h3>东三省总督府</h3>
+          <p>正好夹在故宫与帅府中间，小众的民国老建筑，游客极少，适合安静地拍一组复古照片。若时间富余，小南教堂、太清宫也是备选。</p>
+          <button class="poi-link" data-fly="zongdufu">在地图上查看</button>
+          <figure>
+            <img alt="东三省总督府旧址" loading="lazy" data-prompt="沈阳东三省总督府旧址，百年欧式灰砖老建筑摄影，民国政府建筑，庄严对称，街角视角，无文字" data-size="landscape_16_9">
+            <figcaption>总督府旧址 · 故宫与帅府之间</figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <div class="stop reveal">
+        <div class="dot">五</div>
+        <div class="body">
+          <div class="time"><b>17:00 – 19:00</b><span class="dur">晚餐 + 休息</span></div>
+          <h3>晚餐</h3>
+          <p>回中街解决：鸡架、烧烤、老字号任选。想吃地道市井味，可参考下方的「老四季」；想吃得热闹，西塔美食街也在地铁圈内。</p>
+        </div>
+      </div>
+
+      <div class="stop main reveal">
+        <div class="dot">六</div>
+        <div class="body">
+          <div class="time"><b>夜晚临睡前</b><span class="dur">二选一或连逛</span></div>
+          <h3>中街夜色</h3>
+          <p><b>① 盛京龙城</b>　北中街，中式古建院落，人少安静，适合慢慢逛。<br><b>② 中街步行街 + 头条胡同 + 长安寺胡同</b>　主街逛老字号，胡同里吃小吃、找网红墙，红灯笼亮起来就是最好的夜景。</p>
+          <button class="poi-link" data-fly="zhongjie">在地图上查看</button>
+          <figure>
+            <img alt="中街夜景红灯笼" loading="lazy" data-prompt="沈阳中街夜景摄影，中式步行街挂满红灯笼，暖黄灯光下的仿古建筑与熙攘人流，夜色氛围，无文字" data-size="landscape_16_9">
+            <figcaption>中街 · 红灯笼亮起的时刻</figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 地图 ================= -->
+<section id="map-sec">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="no">贰 / MAP</span><h2>全域地图 · 关键景点与步行路线</h2></div>
+    <p class="sec-lead reveal">主要景点与名称已直接标注在地图上：红色①–④为周六游览顺序，深红为周日大东副食，灰点为加游可选。红色实线为高德按游览顺序规划的周六步行路线，深红虚线为周日上午路线。</p>
+    <div class="map-tools reveal" id="mapTools">
+      <button class="on" data-filter="all">全部景点</button>
+      <button data-filter="sat">周六主线</button>
+      <button data-filter="sun">周日 · 大东副食</button>
+      <button data-filter="opt">加游可选</button>
+    </div>
+    <div class="map-box reveal">
+      <div id="mapDiv"></div>
+      <div class="map-fallback" id="mapFallback">地图加载失败或当前离线<br><span style="font-size:12px">联网后刷新页面即可查看高德地图；路线数据已本地化，无需联网</span></div>
+    </div>
+    <p class="route-stat reveal" id="routeStat">正在加载本地路线数据…</p>
+    <div class="map-legend reveal">
+      <span><i class="lg-pin"></i>周六主线景点（序号即游览顺序）</span>
+      <span><i class="lg-pin2"></i>周日 · 大东副食</span>
+      <span><i class="lg-dot"></i>加游可选景点</span>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 周日 ================= -->
+<section id="sunday">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="no">叁 / DAY 2</span><h2>周日上午 · 还愿意起床的同学</h2></div>
+    <p class="sec-lead reveal">睡到自然醒，二选一：要么去本地人最认可的食品店打包伴手礼，要么把行程交给下面的「顺路加游」。</p>
+    <div class="rule reveal"></div>
+    <div class="opt-grid">
+      <article class="opt reveal">
+        <figure><img alt="大东副食熟食与糕点" loading="lazy" data-prompt="东北老式国营副食品商店室内熟食柜台摄影，熏鸡红肠糕点陈列，暖色灯光，市井烟火气，无文字" data-size="landscape_16_9"></figure>
+        <div class="cnt">
+          <span class="tag">选择一 · 买吃的打包带回家</span>
+          <h3>大东副食商场</h3>
+          <div class="hist">老沈阳俗称「东行」，就在抚近门（大东门）城墙脚下。前身是 <b>1829 年（清道光九年）</b>的小东门菜行，清代盛京的老集市；1958 年成为国营大东副食品商店，1984 年正式定名，沈阳首批老字号。</div>
+          <div class="buy">
+            <h4>熟食熏酱区 · 本地人常买</h4>
+            <ul>
+              <li><b>八旗手工肠</b>：儿童肠、排骨肠、蒜肠，肉含量高，可真空打包当伴手礼</li>
+              <li><b>沟帮子熏鸡</b>：熏香浓郁，常年排队</li>
+              <li><b>四喜丸子</b>：大颗手工肉丸，带马蹄</li>
+              <li>熏肉大饼 · 皇城烤鸭 · 熏鸡架 · 卤猪蹄</li>
+            </ul>
+          </div>
+          <div class="buy" style="margin-top:14px">
+            <h4>糕点面食区</h4>
+            <ul>
+              <li><b>蟹黄酥</b>：排队王，掉渣酥皮多口味，趁热吃最好</li>
+              <li><b>宫廷金丝饼</b>：分甜咸口，层层酥脆现烙现卖</li>
+              <li><b>老式糕点</b>：炉果、糖蜜果、粘豆包、苏耗子、大列巴</li>
+            </ul>
+          </div>
+          <button class="poi-link" data-fly="dadong">在地图上查看</button>
+        </div>
+      </article>
+      <article class="opt flat reveal">
+        <div class="cnt">
+          <span class="tag">选择二</span>
+          <div class="big">把上午交给兴趣<br>↓ 见下方「顺路加游」</div>
+          <p>洗浴、早市、教堂、道观、博物馆、鸡架、西塔……按天气与心情自由组合，每一项都值得半天。</p>
+          <a class="arrow" href="#more">直接去看加游清单 →</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 加游 ================= -->
+<section id="more">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="no">肆 / MORE</span><h2>顺路加游 · 早来晚走都值得</h2></div>
+    <p class="sec-lead reveal">多住一两天、或者早晚有余量的时候，从下面挑着玩。</p>
+    <div class="rule reveal"></div>
+    <div class="grid">
+      <div class="g reveal"><figure><img alt="东北洗浴" loading="lazy" data-prompt="东北豪华洗浴中心休息大厅内景摄影，暖木色调，宽敞舒适，搓澡文化氛围，无人物特写，无文字" data-size="landscape_4_3"></figure>
+        <div class="cnt"><h3>沈阳的洗浴</h3><p>其实真的很舒服、很放松，来沈阳必体验项目之一。</p><span class="meta">半天 · 放松</span></div></div>
+      <div class="g reveal"><figure><img alt="沈阳早市" loading="lazy" data-prompt="东北早市清晨摄影，摊位热气腾腾的豆腐脑油条糕点，人们买菜赶集，市井烟火气，冬日晨光，无文字" data-size="landscape_4_3"></figure>
+        <div class="cnt"><h3>早市 · 夜市</h3><p>便宜、市井、烟火气，是了解沈阳最直接的窗口。</p><span class="meta">清晨 / 夜晚</span></div></div>
+      <div class="g reveal"><figure><img alt="小南教堂" loading="lazy" data-prompt="沈阳小南天主教堂哥特式建筑摄影，青灰色双塔尖顶教堂正面，广场前留影的游客，蓝天白云，无文字" data-size="landscape_4_3"></figure>
+        <div class="cnt"><h3>小南教堂</h3><p>东北规模最大的哥特式天主教堂，全国重点文物保护单位。</p><button class="poi-link" data-fly="xiaonan">在地图上查看</button></div></div>
+      <div class="g reveal"><figure><img alt="太清宫" loading="lazy" data-prompt="沈阳太清宫道教宫观摄影，灰墙灰瓦古建筑院落，香炉与殿堂，清幽古朴，无文字" data-size="landscape_4_3"></figure>
+        <div class="cnt"><h3>太清宫</h3><p>东北道教全真龙门派第一丛林，始建于清康熙二年（1663）。</p><button class="poi-link" data-fly="taiqing">在地图上查看</button></div></div>
+      <div class="g reveal"><figure><img alt="辽宁博物馆" loading="lazy" data-prompt="现代博物馆展厅内景摄影，柔和射灯下的中国古代文物展柜与书法绘画，极简高级，无文字" data-size="landscape_4_3"></figure>
+        <div class="cnt"><h3>辽宁博物馆 · 科技馆</h3><p>辽博书画文物全国有名；科技馆有全国最大的 IMAX。</p><button class="poi-link" data-fly="bowuguan">在地图上查看</button></div></div>
+      <div class="g reveal"><figure><img alt="老四季鸡架" loading="lazy" data-prompt="东北老式面馆一碗抻面和熏鸡架特写摄影，鸡汤面清亮，市井小店木桌，诱人食欲，无文字" data-size="landscape_4_3"></figure>
+        <div class="cnt"><h3>老四季</h3><p>沈阳老百姓最喜欢吃的：便宜、好吃、市井，桌椅甚至有点油腻。</p><button class="poi-link" data-fly="laoxiji">在地图上查看</button></div></div>
+      <div class="g reveal"><figure><img alt="西塔街" loading="lazy" data-prompt="沈阳西塔韩式风情街夜景摄影，韩文霓虹招牌烤肉店，夜色灯光热闹街景，无中文大字" data-size="landscape_4_3"></figure>
+        <div class="cnt"><h3>西塔美食街</h3><p>韩式风味聚集地：烤肉、冷面、打糕，深夜也热闹。</p><button class="poi-link" data-fly="xita">在地图上查看</button></div></div>
+      <div class="g reveal"><figure><img alt="北陵公园清昭陵" loading="lazy" data-prompt="沈阳北陵公园清昭陵摄影，金瓦红墙的皇家陵寝方城与角楼，秋日金黄树木倒映湖面，无文字" data-size="landscape_4_3"></figure>
+        <div class="cnt"><h3>北陵公园 · 清昭陵</h3><p>关外三陵中规模最大、保存最完整，世界文化遗产。皇太极与孝端文皇后合葬陵，一半帝陵一半超大森林公园，地铁直达，适合半天。</p><button class="poi-link" data-fly="beiling">在地图上查看</button></div></div>
+      <div class="g reveal"><figure><img alt="棋盘山" loading="lazy" data-prompt="沈阳棋盘山风景区航拍摄影，秀湖碧水环绕青山，层林尽染，自然风光大气，无文字" data-size="landscape_4_3"></figure>
+        <div class="cnt"><h3>棋盘山风景区</h3><p>市郊的自然山水，适合多住几天、想爬山大口呼吸的日子。</p><button class="poi-link" data-fly="qipanshan">在地图上查看</button></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 周边 ================= -->
+<section id="nearby" style="padding-bottom:clamp(64px,10vh,104px)">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="no">伍 / BEYOND</span><h2>高铁速达 · 从沈阳出发的周边城</h2></div>
+    <p class="sec-lead reveal">多住几天的同学，从沈阳坐高铁，半小时到两小时就能抵达这些地方。</p>
+    <div class="rule reveal"></div>
+  </div>
+  <div class="wrap">
+    <div class="hscroll">
+      <article class="city reveal">
+        <figure><img alt="本溪水洞" loading="lazy" data-prompt="本溪水洞地下暗河溶洞摄影，游船穿行在灯光照射的钟乳石溶洞河道，神秘幽蓝，无文字" data-size="landscape_4_3"></figure>
+        <div class="cnt"><div class="rail">高铁约 30 分钟</div><h3>本溪<small>本溪水洞</small></h3>
+        <p>世界最长可乘船游览的地下充水溶洞。坐船穿行 2800 米地下暗河，看亿年钟乳石。</p></div>
+      </article>
+      <article class="city reveal">
+        <figure><img alt="辽阳白塔" loading="lazy" data-prompt="辽阳白塔摄影，辽代八角十三层密檐砖塔特写，白色古塔蓝天背景，檐角风铃，无文字" data-size="landscape_4_3"></figure>
+        <div class="cnt"><div class="rail">高铁约 40 分钟</div><h3>辽阳<small>白塔 · 广佑寺</small></h3>
+        <p>古称襄平，2300 多年建城史。白塔是东北现存最高辽代砖塔（70.4 米）；隔壁广佑寺有 21.48 米殿内木质贴金大佛等多项世界之最。</p></div>
+      </article>
+      <article class="city reveal">
+        <figure><img alt="鞍山千山" loading="lazy" data-prompt="鞍山千山风景区摄影，花岗岩奇峰怪石与古寺庙建筑掩映苍松之间，东北名山大气全景，无文字" data-size="landscape_4_3"></figure>
+        <div class="cnt"><div class="rail">高铁约 50 分钟</div><h3>鞍山<small>千山 · 玉佛苑</small></h3>
+        <p>千山 5A，「东北明珠」；玉佛苑有吉尼斯认证的世界最大玉佛——整块 260 吨岫岩玉石王雕成，正面释迦牟尼、背面渡海观音。</p></div>
+      </article>
+      <article class="city reveal">
+        <figure><img alt="兴城古城" loading="lazy" data-prompt="兴城宁远古城摄影，明代方形城墙城楼与鼓楼老街，青砖古城黄昏光线，历史沧桑感，无文字" data-size="landscape_4_3"></figure>
+        <div class="cnt"><div class="rail">高铁约 1.5 小时</div><h3>兴城<small>宁远古城</small></h3>
+        <p>国内保存最完好的明代方形卫城（1428 年），袁崇焕「宁远大捷」就发生在这里。</p></div>
+      </article>
+      <article class="city reveal">
+        <figure><img alt="丹东鸭绿江" loading="lazy" data-prompt="丹东鸭绿江断桥摄影，钢铁大桥延伸江面，对岸朝鲜山影朦胧，边境江景大气，无文字" data-size="landscape_4_3"></figure>
+        <div class="cnt"><div class="rail">高铁约 1.5 小时</div><h3>丹东<small>鸭绿江畔</small></h3>
+        <p>中国最大边境城市，与朝鲜隔江相望：边境风情、红色历史、山海江林、朝鲜族美食。</p></div>
+      </article>
+      <article class="city reveal">
+        <figure><img alt="大连海滨" loading="lazy" data-prompt="大连星海湾海滨城市风光摄影，蓝色海湾广场与灯塔海鸥，滨海城市清新大气，无文字" data-size="landscape_4_3"></figure>
+        <div class="cnt"><div class="rail">高铁约 2 小时</div><h3>大连 / 锦州<small>滨海与辽西</small></h3>
+        <p>大连看海吃海鲜；锦州有烧烤与辽沈记忆，均可高铁直达。</p></div>
+      </article>
+    </div>
+    <p class="nearby-tail reveal">以上时长为参考值，具体以当日车次为准；周末出行建议提前购票。</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <h4>实用信息</h4>
+      <ul>
+        <li>地铁 1 号线「中街站」「怀远门站」均可步行进入老城核心区</li>
+        <li>故宫、帅府均为周一闭馆（法定节假日除外），需提前线上预约</li>
+        <li>老城景点集中，全程步行即可；去北陵可乘地铁 2 号线</li>
+        <li>冬季寒冷干燥，注意保暖；夏季防晒，春秋最舒适</li>
+      </ul>
+    </div>
+    <div>
+      <h4>一句话总结</h4>
+      <ul>
+        <li>上午看清宫，下午看民国，夜里钻胡同</li>
+        <li>周日早起去大东副食，把盛京的味道打包带回家</li>
+        <li>还有力气？洗浴安排上，真的舒服</li>
+      </ul>
+    </div>
+    <div class="fin"><span>盛京两日 · 沈阳周末漫游指南</span><span>地图 © 高德地图 · 单文件页面，发给朋友即可直接打开</span></div>
+  </div>
+</footer>
+
+<script>
+/* ============ 图片加载（运行时拼 URL，保证单文件可分发） ============ */
+(function(){
+  var API="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image";
+  document.querySelectorAll("img[data-prompt]").forEach(function(img){
+    img.src=API+"?prompt="+encodeURIComponent(img.getAttribute("data-prompt"))+"&image_size="+(img.getAttribute("data-size")||"landscape_16_9");
+    img.addEventListener("error",function(){ img.style.opacity=.35; });
+  });
+})();
+
+/* ============ 滚动显现 & 导航状态 ============ */
+(function(){
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target);}})},{threshold:.12});
+  document.querySelectorAll(".reveal").forEach(function(el){io.observe(el)});
+  var nav=document.getElementById("nav");
+  var secs=["day0","saturday","map-sec","sunday","more","nearby"].map(function(id){return document.getElementById(id)});
+  var links=document.querySelectorAll(".nav .links a");
+  window.addEventListener("scroll",function(){
+    nav.classList.toggle("scrolled",scrollY>40);
+    var cur=-1;
+    secs.forEach(function(s,i){ if(s && s.getBoundingClientRect().top<innerHeight*.4) cur=i; });
+    links.forEach(function(a,i){ a.classList.toggle("on",i===cur) });
+  },{passive:true});
+})();
+
+/* ============ 高德地图 ============ */
+/*
+ * Key 不写入源码：__AMAP_KEY__ / __AMAP_JCODE__ 为占位符。
+ * 部署（GitHub Pages）：由 .github/workflows/deploy.yml 从仓库 Secret（AMAP_KEY / AMAP_JCODE）注入；
+ * 本地预览：设置环境变量 AMAP_KEY / AMAP_JCODE 后运行 build.ps1，打开生成的 dist/index.html。
+ */
+var AMAP_KEY="__AMAP_KEY__";
+/* 安全密钥：必须在 loader 加载前配置（v2.0 强制） */
+window._AMapSecurityConfig={securityJsCode:"__AMAP_JCODE__"};
+
+var map=null,AMapRef=null,mapReady=false,pendingFly=null,curFilter="all";
+var markers={},satPolys=[],sunPolys=[],infoWin=null;
+var stat={sat:0,satT:0,sun:0,sunT:0};
+
+/* POI：高德 GCJ-02 坐标 */
+var POIS=[
+  {id:"gugong",   grp:"sat", n:"1", name:"沈阳故宫博物院", lng:123.4557, lat:41.7984, tip:"行程起点 · 关外唯一皇家宫殿群 · 周一闭馆"},
+  {id:"shuaifu",  grp:"sat", n:"2", name:"张氏帅府博物馆", lng:123.4598, lat:41.7941, tip:"张学良旧居 · 大青楼、老虎厅、赵一荻旧居"},
+  {id:"zongdufu", grp:"sat", n:"3", name:"东三省总督府旧址", lng:123.4576, lat:41.7968, tip:"故宫与帅府中间 · 小众民国建筑，顺路打卡"},
+  {id:"zhongjie", grp:"sat", n:"4", name:"中街步行街",     lng:123.4615, lat:41.8013, tip:"头条胡同、长安寺胡同、盛京龙城 · 餐饮+夜景核心区"},
+  {id:"dadong",   grp:"sun", n:"1", name:"大东副食商场（东行）", lng:123.4639, lat:41.7965, tip:"抚近门（大东门）脚下 · 老字号伴手礼采购"},
+  {id:"xiaonan",  grp:"opt", name:"小南天主教堂",   lng:123.4529, lat:41.7906, tip:"南关教堂 · 东北最大哥特式天主教堂"},
+  {id:"taiqing",  grp:"opt", name:"太清宫",         lng:123.4478, lat:41.8047, tip:"全真龙门派第一丛林 · 1663 年"},
+  {id:"bowuguan", grp:"opt", name:"辽宁省博物馆",   lng:123.4605, lat:41.6780, tip:"书画文物馆藏丰富 · 浑南新区 · 建议留半天"},
+  {id:"laoxiji",  grp:"opt", name:"老四季（总店）", lng:123.4299, lat:41.7867, tip:"沈阳经典鸡架抻面老字号 · 市井味"},
+  {id:"xita",     grp:"opt", name:"西塔美食街（核心区）", lng:123.4087, lat:41.8051, tip:"韩式风味聚集地 · 夜间热闹"},
+  {id:"beiling",  grp:"opt", name:"北陵公园（清昭陵）", lng:123.4285, lat:41.8516, tip:"世界文化遗产 · 关外三陵规模最大 · 地铁 2 号线直达"},
+  {id:"qipanshan",grp:"opt", name:"棋盘山风景区",   lng:123.6167, lat:41.2000, tip:"市郊山水休闲地 · 核心景区入口"}
+];
+
+/* 按游览顺序：周六 故宫→帅府→总督府→中街；周日 中街→大东副食 */
+var SAT_ORDER=["gugong","shuaifu","zongdufu","zhongjie"];
+var SUN_ORDER=["zhongjie","dadong"];
+function poiById(id){ for(var i=0;i<POIS.length;i++){ if(POIS[i].id===id) return POIS[i]; } return null; }
+
+/* 本地化路线数据：由高德步行路径规划接口预计算后内嵌，页面加载不再调用路线接口 */
+var ROUTES_DATA={
+  /* 坐标：高德 GCJ-02；distance 米 / time 秒 */
+  sat:{distance:2285,time:1828,paths:[
+    [[123.455703,41.798507],[123.455629,41.798507],[123.455443,41.798494],[123.455404,41.798472],[123.455404,41.798277],[123.455399,41.798108],[123.455412,41.79809],[123.455438,41.798073],[123.45553,41.798056],[123.455673,41.798056],[123.455673,41.798051],[123.455712,41.797734],[123.455768,41.797552],[123.455768,41.797548],[123.456758,41.797539],[123.45714,41.797535],[123.457292,41.79753],[123.457878,41.797526],[123.458811,41.797513],[123.459076,41.7975],[123.460217,41.797522],[123.460161,41.796727],[123.460122,41.796185],[123.460104,41.795911],[123.460091,41.795716],[123.460061,41.795243],[123.460056,41.794644],[123.460043,41.794353],[123.460035,41.794206],[123.46003,41.794201],[123.459805,41.794201]],
+    [[123.4598,41.794201],[123.46003,41.794201],[123.460039,41.794349],[123.460052,41.79464],[123.460056,41.795239],[123.460087,41.795712],[123.4601,41.795907],[123.460117,41.796181],[123.459653,41.796233],[123.458993,41.796293],[123.458646,41.796302],[123.457977,41.796337],[123.457591,41.79635],[123.457587,41.79635],[123.457595,41.796411],[123.457604,41.796567],[123.457426,41.796571],[123.457374,41.796593],[123.457361,41.796623],[123.457365,41.796806]],
+    [[123.457365,41.796806],[123.457378,41.79704],[123.457378,41.797036],[123.457135,41.797018],[123.457131,41.797014],[123.457135,41.797365],[123.45714,41.79753],[123.457292,41.79753],[123.457878,41.797526],[123.458811,41.797513],[123.459076,41.7975],[123.460217,41.797522],[123.460265,41.798659],[123.460278,41.798893],[123.460291,41.799262],[123.460326,41.800074],[123.460334,41.800469],[123.460334,41.800499],[123.460334,41.800573],[123.460339,41.80066],[123.460356,41.800851],[123.460382,41.801385],[123.460382,41.801428],[123.460747,41.801428],[123.461107,41.801432],[123.461419,41.801432],[123.461497,41.801432]]
+  ]},
+  sun:{distance:975,time:780,paths:[
+    [[123.461497,41.801432],[123.461424,41.801432],[123.461111,41.801432],[123.460751,41.801432],[123.460386,41.801432],[123.460382,41.801428],[123.460382,41.801389],[123.46036,41.800855],[123.460343,41.800664],[123.460339,41.800577],[123.460339,41.800503],[123.460339,41.800473],[123.46033,41.800078],[123.460295,41.799266],[123.460282,41.798898],[123.460269,41.798663],[123.460221,41.797526],[123.460217,41.797522],[123.460625,41.797513],[123.462331,41.797465],[123.462331,41.797461],[123.462305,41.796918],[123.462274,41.796484],[123.462266,41.796415],[123.462248,41.79622],[123.462244,41.796215],[123.462969,41.796224],[123.463216,41.796237],[123.46349,41.796233],[123.463533,41.796246],[123.463572,41.79628],[123.463724,41.796554]]
+  ]}
+};
+/* 各段对应关系（与 ROUTES_DATA.paths 顺序一致） */
+var ROUTE_SEGMENTS={
+  sat:[{from:"gugong",to:"shuaifu"},{from:"shuaifu",to:"zongdufu"},{from:"zongdufu",to:"zhongjie"}],
+  sun:[{from:"zhongjie",to:"dadong"}]
+};
+
+function markerHtml(p){
+  var cls=p.grp==="sat"?"mk-sat":(p.grp==="sun"?"mk-sun":"mk-opt");
+  var num=p.n?'<span>'+p.n+'</span>':'';
+  return '<div class="mk '+cls+'"><div class="mk-pin">'+num+'</div><div class="mk-nm">'+p.name+'</div></div>';
+}
+
+function mapFail(){ var f=document.getElementById("mapFallback"); if(f) f.style.display="flex"; }
+
+function loadAmap(){
+  if(AMAP_KEY.indexOf("__AMAP")===0){
+    var f=document.getElementById("mapFallback");
+    if(f){
+      f.style.display="flex";
+      f.innerHTML='高德地图 Key 未注入<br><span style="font-size:12px">请通过 GitHub Pages 访问；本地预览请运行 build.ps1 后打开 dist/index.html</span>';
+    }
+    return;
+  }
+  var s=document.createElement("script");
+  s.src="https://webapi.amap.com/loader.js";
+  s.onload=function(){
+    AMapLoader.load({
+      key:AMAP_KEY,
+      version:"2.0",
+      plugins:["AMap.Scale","AMap.ToolBar"]
+    }).then(function(AMap){
+      try{ initMap(AMap); }catch(e){ console.error("[amap] init error:",e); mapFail(); }
+    }).catch(function(e){ console.error("[amap] loader failed:",e); mapFail(); });
+  };
+  s.onerror=function(){ console.warn("[amap] loader.js load failed (offline?)"); mapFail(); };
+  document.body.appendChild(s);
+}
+
+function initMap(AMap){
+  AMapRef=AMap;
+  /* 埋点：设置应用标识（必须在 new AMap.Map 之前） */
+  try{ AMap.getConfig().appname="amap-jsapi-skill"; }catch(e){}
+
+  map=new AMap.Map("mapDiv",{
+    center:[123.4580,41.7977],
+    zoom:15,
+    viewMode:"2D",
+    mapStyle:"amap://styles/whitesmoke",
+    resizeEnable:true
+  });
+  map.addControl(new AMap.Scale());
+  map.addControl(new AMap.ToolBar({position:{right:"12px",bottom:"24px"}}));
+
+  infoWin=new AMap.InfoWindow({offset:new AMap.Pixel(0,-46),isCustom:false});
+
+  /* 全部 POI 标记：名称常显在地图上 */
+  POIS.forEach(function(p){
+    var m=new AMap.Marker({
+      position:[p.lng,p.lat],
+      content:markerHtml(p),
+      anchor:"bottom-center",
+      offset:new AMap.Pixel(0,-14),
+      zIndex:p.grp==="opt"?10:100,
+      title:p.name
+    });
+    m.on("click",function(){ openWin(p.id); });
+    markers[p.id]=m;
+  });
+  applyFilter(curFilter);
+
+  /* 使用本地化路线数据绘制（不再调用步行路径规划接口） */
+  buildRoutes("sat",{color:"#A63A2B",dashed:false,store:satPolys,stat:"sat"});
+  buildRoutes("sun",{color:"#7E2A20",dashed:true,store:sunPolys,stat:"sun"});
+  updateStat();
+  map.setFitView(SAT_ORDER.map(function(id){return markers[id]}).concat(satPolys),false,[70,70,70,70],16);
+
+  mapReady=true;
+  if(pendingFly){ flyTo(pendingFly); pendingFly=null; }
+}
+
+/* 用本地化路线数据逐段绘制折线（数据来自 ROUTES_DATA，无需联网） */
+function buildRoutes(key,opts){
+  var data=ROUTES_DATA[key];
+  if(!data)return;
+  stat[opts.stat]=data.distance||0;
+  stat[opts.stat+"T"]=data.time||0;
+  data.paths.forEach(function(path){
+    var pl=new AMapRef.Polyline({
+      path:path,
+      strokeColor:opts.color,
+      strokeWeight:5,
+      strokeOpacity:.9,
+      showDir:!opts.dashed,
+      lineJoin:"round",
+      strokeStyle:opts.dashed?"dashed":"solid",
+      strokeDasharray:opts.dashed?[10,8]:[]
+    });
+    opts.store.push(pl);
+    map.add(pl);
+    if(curFilter!=="all" && curFilter!==key) map.remove(pl);
+  });
+}
+
+function updateStat(){
+  var el=document.getElementById("routeStat");
+  if(!el)return;
+  var satKm=(stat.sat/1000).toFixed(1), satMin=Math.round(stat.satT/60);
+  var sunKm=(stat.sun/1000).toFixed(1), sunMin=Math.round(stat.sunT/60);
+  el.innerHTML='周六主线（①→④ 按游览顺序）步行约 <b>'+satKm+' km</b> · 约 <b>'+satMin+' 分钟</b>'
+    +'　｜　周日去大东副食约 <b>'+sunKm+' km</b> · <b>'+sunMin+' 分钟</b>'
+    +'<span style="display:block;font-size:12px;color:#9A9078;margin-top:2px">路线数据已本地化内嵌，打开页面无需调用路线接口</span>';
+}
+
+function openWin(id){
+  if(!map||!markers[id])return;
+  var p=poiById(id);
+  infoWin.setContent('<div style="min-width:180px;max-width:240px;font-family:inherit;padding:2px 4px">'
+    +'<div style="font-weight:700;font-size:14px;margin-bottom:2px;color:#2A251D">'+p.name+'</div>'
+    +'<div style="font-size:12px;color:#6B6354;line-height:1.6">'+p.tip+'</div></div>');
+  infoWin.open(map,[p.lng,p.lat]);
+}
+
+function applyFilter(f){
+  curFilter=f;
+  if(!map)return;
+  POIS.forEach(function(p){
+    var show=(f==="all"||p.grp===f);
+    if(show){ map.add(markers[p.id]); } else { map.remove(markers[p.id]); }
+  });
+  satPolys.forEach(function(pl){ (f==="all"||f==="sat")?map.add(pl):map.remove(pl); });
+  sunPolys.forEach(function(pl){ (f==="all"||f==="sun")?map.add(pl):map.remove(pl); });
+}
+
+function flyTo(id){
+  var p=poiById(id);
+  if(!p)return;
+  if(!mapReady){ pendingFly=id; loadAmap(); document.getElementById("map-sec").scrollIntoView({behavior:"smooth"}); return; }
+  applyFilter("all");
+  document.querySelectorAll("#mapTools button").forEach(function(b){b.classList.toggle("on",b.dataset.filter==="all")});
+  map.setZoomAndCenter(16,[p.lng,p.lat]);
+  setTimeout(function(){ openWin(id); },450);
+}
+
+/* 筛选按钮 & 卡片飞入 */
+document.querySelectorAll("#mapTools button").forEach(function(btn){
+  btn.addEventListener("click",function(){
+    document.querySelectorAll("#mapTools button").forEach(function(b){b.classList.remove("on")});
+    btn.classList.add("on");
+    if(!mapReady){ curFilter=btn.dataset.filter; loadAmap(); return; }
+    applyFilter(btn.dataset.filter);
+  });
+});
+document.querySelectorAll("[data-fly]").forEach(function(el){
+  el.addEventListener("click",function(){ flyTo(el.getAttribute("data-fly")); });
+});
+
+/* 地图区块接近视口时再加载，不阻塞首屏 */
+(function(){
+  var sec=document.getElementById("map-sec");
+  var io=new IntersectionObserver(function(es){
+    if(es[0].isIntersecting){ io.disconnect(); setTimeout(loadAmap,120); }
+  },{rootMargin:"600px 0px"});
+  if(sec) io.observe(sec);
+})();
+</script>
+</body>
+</html>
